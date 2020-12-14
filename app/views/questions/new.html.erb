@@ -1,0 +1,25 @@
+<%= form_with(model: @question, local: true) do |form| %>
+  <p>
+    <%= form.label 'First name' %><br>
+    <%= form.text_field :firstname, class: 'form-control' %>
+  </p>
+
+   <p>
+    <%= form.label 'Birth date' %><br>
+    <%= form.text_field :birthdate, class: 'form-control', type: 'date' %>
+  </p>
+
+  <p>
+    <%= form.label 'OS of choice' %><br>
+    <%= form.collection_select :system_id, System.order(:name), :id, :name, { :include_blank => t('Please select system')}, {class: 'form-control' } %>
+  </p>
+
+  <p>
+    <%= form.label 'Something about you (140 characters top)' %><br>
+    <%= form.text_area :about_you, class: 'form-control' %>
+  </p>
+ 
+  <p>
+    <%= form.submit :Submit, class: 'btn btn-primary' %>
+  </p>
+<% end %>
